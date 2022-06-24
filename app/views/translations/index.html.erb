@@ -1,0 +1,39 @@
+<div class="container">
+  <h1 class="text-center">Language Translator</h1>
+
+  <%= form_with url: translate_path, method: :post, local: true do %>
+    <div class="row">
+        <div class="col-lg-5">
+          <div class="form-group">
+            <label for="source">Translate</label>
+            <%= text_area_tag :source, @source, class: 'form-control', style: 'width: 100%; height: 100px' %>
+          </div>
+
+          <div class="form-group">
+            <label for="source_language">From</label>
+
+            <%= select_tag :source_language, options_for_select(@languages, @source_language), class: 'form-control', include_blank: 'Auto-detect' %>
+          </div>
+        </div>
+
+        <div class="col-lg-2 d-flex align-items-center justify-content-center">
+          <button type="submit" class="btn btn-primary">
+            Translate <i class="fa fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="form-group">
+            <label for="translation">Translation</label>
+            <%= text_area_tag :translation, @translation, class: 'form-control', style: 'width: 100%; height: 100px', readonly: true %>
+          </div>
+
+          <div class="form-group">
+            <label for="destination_language">To</label>
+
+            <%= select_tag :destination_language, options_for_select(@languages, @destination_language), class: 'form-control' %>
+          </div>
+        </div>
+    </div>
+  <% end %>
+</div>
